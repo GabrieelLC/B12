@@ -4,9 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SistemaDePessoa extends JFrame {
+public class SistemaPessoa extends JFrame {
 
-    public SistemaDePessoa() {
+    public SistemaPessoa() {
         // Configurações da Janela Principal
         setTitle("Sistema de Pessoa");
         setSize(600, 400);
@@ -65,7 +65,7 @@ public class SistemaDePessoa extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            SistemaDePessoa frame = new SistemaDePessoa();
+            SistemaPessoa frame = new SistemaPessoa();
             frame.setVisible(true);
         });
     }
