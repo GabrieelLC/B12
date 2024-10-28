@@ -6,16 +6,13 @@ import java.awt.event.ActionListener;
 public class SistemaPessoa extends JFrame {
 
     public SistemaPessoa() {
-        // Configurações da Janela Principal
         setTitle("Sistema de Pessoa");
         setSize(600, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Menu Bar
         JMenuBar menuBar = new JMenuBar();
 
-        // Menu "Cadastro"
         JMenu menuCadastro = new JMenu("Cadastro");
         JMenuItem menuItemUsuarios = new JMenuItem("Usuários");
         JMenuItem menuItemPessoas = new JMenuItem("Pessoas");
@@ -23,7 +20,6 @@ public class SistemaPessoa extends JFrame {
         menuCadastro.add(menuItemUsuarios);
         menuCadastro.add(menuItemPessoas);
 
-        // Menu "Visualização"
         JMenu menuVisualizacao = new JMenu("Visualização");
         JMenuItem menuItemListaUsuario = new JMenuItem("Lista de usuário");
         JMenuItem menuItemListaPessoas = new JMenuItem("Lista de Pessoas");
@@ -31,31 +27,26 @@ public class SistemaPessoa extends JFrame {
         menuVisualizacao.add(menuItemListaUsuario);
         menuVisualizacao.add(menuItemListaPessoas);
 
-        // Menu "Sair"
         JMenu menuSair = new JMenu("Sair");
 
-        // Adiciona os menus à barra de menus
         menuBar.add(menuCadastro);
         menuBar.add(menuVisualizacao);
         menuBar.add(menuSair);
 
         setJMenuBar(menuBar);
 
-        // Área principal da janela (para expandir e ocupar espaço)
         JPanel mainPanel = new JPanel();
         mainPanel.setBackground(Color.WHITE);
         add(mainPanel, BorderLayout.CENTER);
 
-        // Rodapé
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel footerLabel = new JLabel("Versão: 12.1.2024    Usuário: denys.silva    Data de acesso: 20/09/2024 10:58");
         footerPanel.add(footerLabel);
         add(footerPanel, BorderLayout.SOUTH);
 
-        // Ação para abrir a janela de cadastro de usuários
         menuItemUsuarios.addActionListener(e -> abrirJanelaCadastroUsuarios());
+        menuItemPessoas.addActionListener(e -> abrirJanelaCadastroPessoas());
 
-        // Ação para "Sair"
         menuSair.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuSelected(javax.swing.event.MenuEvent e) {
                 System.exit(0);
@@ -65,19 +56,16 @@ public class SistemaPessoa extends JFrame {
         });
     }
 
-    // Método para abrir a janela de cadastro de usuários
     private void abrirJanelaCadastroUsuarios() {
         JFrame cadastroUsuariosFrame = new JFrame("Cadastro de Usuários");
         cadastroUsuariosFrame.setSize(400, 300);
         cadastroUsuariosFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cadastroUsuariosFrame.setLocationRelativeTo(null);
 
-        // Painel de cadastro
         JPanel cadastroPanel = new JPanel();
         cadastroPanel.setLayout(new GridLayout(5, 2, 5, 5));
         cadastroPanel.setBackground(Color.WHITE);
 
-        // Campos de entrada
         cadastroPanel.add(new JLabel("Usuário:", SwingConstants.RIGHT));
         JTextField usuarioField = new JTextField();
         cadastroPanel.add(usuarioField);
@@ -94,7 +82,6 @@ public class SistemaPessoa extends JFrame {
         JCheckBox ativoCheckBox = new JCheckBox();
         cadastroPanel.add(ativoCheckBox);
 
-        // Painel de botões
         JPanel botoesPanel = new JPanel();
         botoesPanel.setLayout(new FlowLayout());
 
@@ -106,18 +93,83 @@ public class SistemaPessoa extends JFrame {
         botoesPanel.add(btnCancelar);
         botoesPanel.add(btnSair);
 
-        // Ações dos botões
         btnSalvar.addActionListener(e -> JOptionPane.showMessageDialog(cadastroUsuariosFrame, "Salvado com sucesso!"));
         btnCancelar.addActionListener(e -> JOptionPane.showMessageDialog(cadastroUsuariosFrame, "Botão clicado: Cancelar"));
-
-        // Ação para fechar a janela ao clicar em "Sair"
         btnSair.addActionListener(e -> cadastroUsuariosFrame.dispose());
 
-        // Adiciona o painel de cadastro e o painel de botões na janela de cadastro de usuários
         cadastroUsuariosFrame.add(cadastroPanel, BorderLayout.CENTER);
         cadastroUsuariosFrame.add(botoesPanel, BorderLayout.SOUTH);
 
         cadastroUsuariosFrame.setVisible(true);
+    }
+
+    private void abrirJanelaCadastroPessoas() {
+        JFrame cadastroPessoasFrame = new JFrame("Cadastro de Pessoas");
+        cadastroPessoasFrame.setSize(500, 400);
+        cadastroPessoasFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        cadastroPessoasFrame.setLocationRelativeTo(null);
+
+        JPanel cadastroPanel = new JPanel();
+        cadastroPanel.setLayout(new GridLayout(8, 2, 5, 5));
+        cadastroPanel.setBackground(Color.WHITE);
+
+        cadastroPanel.add(new JLabel("Nome:", SwingConstants.RIGHT));
+        JTextField nomeField = new JTextField();
+        cadastroPanel.add(nomeField);
+
+        cadastroPanel.add(new JLabel("Endereço:", SwingConstants.RIGHT));
+        JTextField enderecoField = new JTextField();
+        cadastroPanel.add(enderecoField);
+
+        cadastroPanel.add(new JLabel("Cidade:", SwingConstants.RIGHT));
+        JTextField cidadeField = new JTextField();
+        cadastroPanel.add(cidadeField);
+
+        cadastroPanel.add(new JLabel("UF:", SwingConstants.RIGHT));
+        JTextField ufField = new JTextField();
+        cadastroPanel.add(ufField);
+
+        cadastroPanel.add(new JLabel("Email:", SwingConstants.RIGHT));
+        JTextField emailField = new JTextField();
+        cadastroPanel.add(emailField);
+
+        cadastroPanel.add(new JLabel("Telefone:", SwingConstants.RIGHT));
+        JTextField telefoneField = new JTextField();
+        cadastroPanel.add(telefoneField);
+
+        cadastroPanel.add(new JLabel("Sexo:", SwingConstants.RIGHT));
+        String[] sexos = {"Masculino", "Feminino", "Outro"};
+        JComboBox<String> sexoComboBox = new JComboBox<>(sexos);
+        cadastroPanel.add(sexoComboBox);
+
+        JPanel botoesPanel = new JPanel();
+        botoesPanel.setLayout(new FlowLayout());
+
+        JButton btnIncluir = new JButton("Incluir");
+        JButton btnAlterar = new JButton("Alterar");
+        JButton btnExcluir = new JButton("Excluir");
+        JButton btnConsultar = new JButton("Consultar");
+        JButton btnCancelar = new JButton("Cancelar");
+        JButton btnSair = new JButton("Sair");
+
+        botoesPanel.add(btnIncluir);
+        botoesPanel.add(btnAlterar);
+        botoesPanel.add(btnExcluir);
+        botoesPanel.add(btnConsultar);
+        botoesPanel.add(btnCancelar);
+        botoesPanel.add(btnSair);
+
+        btnIncluir.addActionListener(e -> JOptionPane.showMessageDialog(cadastroPessoasFrame, "Botão clicado: Incluir"));
+        btnAlterar.addActionListener(e -> JOptionPane.showMessageDialog(cadastroPessoasFrame, "Botão clicado: Alterar"));
+        btnExcluir.addActionListener(e -> JOptionPane.showMessageDialog(cadastroPessoasFrame, "Botão clicado: Excluir"));
+        btnConsultar.addActionListener(e -> JOptionPane.showMessageDialog(cadastroPessoasFrame, "Botão clicado: Consultar"));
+        btnCancelar.addActionListener(e -> JOptionPane.showMessageDialog(cadastroPessoasFrame, "Botão clicado: Cancelar"));
+        btnSair.addActionListener(e -> cadastroPessoasFrame.dispose());
+
+        cadastroPessoasFrame.add(cadastroPanel, BorderLayout.CENTER);
+        cadastroPessoasFrame.add(botoesPanel, BorderLayout.SOUTH);
+
+        cadastroPessoasFrame.setVisible(true);
     }
 
     public static void main(String[] args) {
