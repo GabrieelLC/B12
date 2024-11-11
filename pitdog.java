@@ -1,4 +1,4 @@
-package AV1;
+
 import java.util.Scanner;
 
 public class pitdog {
