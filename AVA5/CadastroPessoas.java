@@ -1,7 +1,9 @@
-import javax.swing.*;
+
 import java.awt.*;
+import javax.swing.*;
 
 public class CadastroPessoas {
+
     private final JFrame principal;
 
     public CadastroPessoas(JFrame principal) {
@@ -9,8 +11,12 @@ public class CadastroPessoas {
     }
 
     public void exibir() {
+        exibir(600, 300);
+    }
+
+    public void exibir(int largura, int altura) {
         JDialog dialog = new JDialog(principal, "Cadastro de Pessoas", true);
-        dialog.setSize(600, 300);
+        dialog.setSize(largura, altura);
         dialog.setLayout(new BorderLayout());
 
         JLabel titulo = new JLabel("Cadastro de Pessoas", SwingConstants.CENTER);

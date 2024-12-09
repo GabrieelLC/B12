@@ -1,7 +1,9 @@
-import javax.swing.*;
+
 import java.awt.*;
+import javax.swing.*;
 
 public class BotoesCadastro {
+
     private final JDialog dialog;
 
     public BotoesCadastro(JDialog dialog) {
@@ -9,8 +11,12 @@ public class BotoesCadastro {
     }
 
     public JPanel criar() {
+        return criar("Incluir", "Alterar", "Excluir", "Consultar", "Cancelar", "Sair");
+    }
+
+    public JPanel criar(String... labelsPersonalizados) {
         JPanel painelBotoes = new JPanel(new FlowLayout());
-        String[] labels = {"Incluir", "Alterar", "Excluir", "Consultar", "Cancelar", "Sair"};
+        String[] labels = (labelsPersonalizados.length > 0) ? labelsPersonalizados : new String[]{"Incluir", "Alterar", "Excluir", "Consultar", "Cancelar", "Sair"};
         for (String label : labels) {
             JButton button = new JButton(label);
             if ("Sair".equals(label)) {

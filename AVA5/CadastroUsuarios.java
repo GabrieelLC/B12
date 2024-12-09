@@ -1,15 +1,22 @@
-import javax.swing.*;
-import java.awt.*;
 
-public class CadastroUsuarios extends CadastroBase {
+import java.awt.*;
+import javax.swing.*;
+
+public class CadastroUsuarios {
+
+    private final JFrame principal;
+
     public CadastroUsuarios(JFrame principal) {
-        super(principal);
+        this.principal = principal;
     }
 
-    @Override
     public void exibir() {
+        exibir(600, 300);
+    }
+
+    public void exibir(int largura, int altura) {
         JDialog dialog = new JDialog(principal, "Cadastro de Usuários", true);
-        dialog.setSize(600, 300);
+        dialog.setSize(largura, altura);
         dialog.setLayout(new BorderLayout());
 
         JLabel titulo = new JLabel("Cadastro de Usuários", SwingConstants.CENTER);

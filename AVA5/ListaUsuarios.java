@@ -1,7 +1,9 @@
-import javax.swing.*;
+
 import java.awt.*;
+import javax.swing.*;
 
 public class ListaUsuarios {
+
     private final JFrame principal;
 
     public ListaUsuarios(JFrame principal) {
@@ -9,11 +11,15 @@ public class ListaUsuarios {
     }
 
     public void exibir() {
-        JDialog dialog = new JDialog(principal, "Lista de Usuários", true);
+        exibir("Lista de Usuários");
+    }
+
+    public void exibir(String titulo) {
+        JDialog dialog = new JDialog(principal, titulo, true);
         dialog.setSize(750, 650);
         dialog.setLayout(new BorderLayout());
 
-        dialog.add(new JLabel("Lista de Usuários", SwingConstants.CENTER), BorderLayout.NORTH);
+        dialog.add(new JLabel(titulo, SwingConstants.CENTER), BorderLayout.NORTH);
         dialog.add(new JTextArea("Exemplo de lista de usuários..."), BorderLayout.CENTER);
 
         JButton btnFechar = new JButton("Fechar");
